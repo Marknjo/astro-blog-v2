@@ -1,0 +1,15 @@
+---
+type Props = {
+  platform: string;
+  username: string;
+};
+
+const { platform, username } = Astro.props as Props;
+---
+
+<a
+  target="_blank"
+  referrerpolicy="origin"
+  href={`https://www.${platform}.com/${username}`}
+  >{platform.slice(0, 1).toLocaleUpperCase()}{platform.slice(1)}</a
+>
