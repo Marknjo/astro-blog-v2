@@ -13,3 +13,19 @@ const { platform, username } = Astro.props as Props;
   href={`https://www.${platform}.com/${username}`}
   >{platform.slice(0, 1).toLocaleUpperCase()}{platform.slice(1)}</a
 >
+
+<style>
+  a {
+    padding: 0.25rem 1rem;
+    color: white;
+    background-color: #4c1d95;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 150ms ease;
+  }
+
+  a:hover,
+  a:focus {
+    background-color: #411485;
+  }
+</style>
