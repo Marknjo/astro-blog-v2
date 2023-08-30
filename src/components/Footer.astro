@@ -3,16 +3,40 @@ import Social from "./Social.astro";
 ---
 
 <footer>
-  <p>Learn more about my project on</p>
-  <nav>
-    <Social platform="github" username="Marknjo" />
-    <Social platform="twitter" username="marknjo" />
-    <Social platform="youtube" username="@thetalkingdev" />
-  </nav>
+  <div class="social">
+    <p>Learn more about my project on</p>
+    <nav>
+      <Social platform="github" username="Marknjo" />
+      <Social platform="twitter" username="marknjo" />
+      <Social platform="youtube" username="@thetalkingdev" />
+    </nav>
+  </div>
+  <p class="copyright">
+    <small>
+      Copyright<sup>&copy;</sup>&nbsp; Mark Njoroge {
+        new Date(Date.now()).getFullYear()
+      }&nbsp;- All Rights reserved.
+    </small>
+  </p>
 </footer>
 
 <style>
   footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .copyright {
+    margin-top: 6px;
+    padding: 8px;
+    background-color: #391470;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+  }
+
+  .social {
     display: flex;
     gap: 1rem;
     align-items: center;
