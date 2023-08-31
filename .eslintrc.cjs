@@ -21,6 +21,16 @@ module.exports = {
         // override/add rules settings here, such as:
         // "astro/no-set-html-directive": "error"
       },
+      ecmaVersion: "latest",
+    },
+    {
+      files: ["*.ts", "*tsx", "*.js"],
+      parserOptions: {
+        ecmaVersion: 2020,
+      },
+      env: {
+        es6: true,
+      },
     },
     // ...
   ],
