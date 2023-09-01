@@ -1,0 +1,9 @@
+---
+import type { Post } from "../types/Post";
+
+const { post } = Astro.props as Post;
+---
+
+<li>
+  <a href={post.url}>{post.frontmatter.title}</a>
+</li>
