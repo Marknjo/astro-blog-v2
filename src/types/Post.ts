@@ -1,3 +1,5 @@
+import type { MarkdownInstance } from "astro";
+
 export type PostImage = { url: string; alt: string };
 
 export type PostFrontmatter = {
@@ -14,4 +16,4 @@ export type Post = {
     url: string;
     frontmatter: PostFrontmatter;
   };
-};
+} & MarkdownInstance<Record<string, any>>;
