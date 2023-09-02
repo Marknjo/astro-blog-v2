@@ -1,0 +1,46 @@
+---
+import Tag from "./Tag.astro";
+
+type Props = {
+  tags: string[];
+};
+
+const { tags } = Astro.props as Props;
+---
+
+<section>
+  <h4>Post Tags:</h4>
+  <nav class="tags">
+    {tags.map((tag) => <Tag {tag} />)}
+  </nav>
+</section>
+
+<style>
+  section {
+    display: flex;
+    align-items: flex-end;
+    border-top: 1px solid #b16148;
+    padding-top: 10px;
+  }
+
+  h4 {
+    margin: 0;
+    padding-right: 12px;
+  }
+
+  .tags {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  nav {
+    display: flex;
+    gap: 8px;
+  }
+</style>
