@@ -12,14 +12,24 @@ const pageTitle = "Tags";
 
 <BaseLayout {pageTitle}>
   <h1>Blog Tags</h1>
-  <ul>
+  <ul class="tags">
     {
       tags.map((tag) => (
         <BlogPost
           url={`/tags/${tag}`}
           title={`${tag.slice(0, 1).toUpperCase()}${tag.slice(1)}`}
+          asTag
         />
       ))
     }
   </ul>
 </BaseLayout>
+
+<style>
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+  }
+</style>
