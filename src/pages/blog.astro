@@ -1,12 +1,11 @@
 ---
-import type { MarkdownInstance } from "astro";
 import BlogPost from "../components/BlogPost.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 import "../styles/global.css";
-import type { Post } from "../types/Post";
+import type { Blog } from "../types/Post";
 
-const allPosts: MarkdownInstance<Post>[] = await Astro.glob("./posts/*.md");
+const allPosts: Blog[] = await Astro.glob("./posts/*.md");
 
 const pageTitle = "All Blog Posts";
 ---
@@ -15,6 +14,10 @@ const pageTitle = "All Blog Posts";
   <h1>My Astro Learning Blog</h1>
   <p>This is where I will post about my journey learning Astro.</p>
   <ul>
-    {allPosts.map((post) => <BlogPost {post} />)}
+    {
+      allPosts.map((post) => (
+        <BlogPost url={post.url!} title={post.frontmatter.title} />
+      ))
+    }
   </ul>
 </BaseLayout>
