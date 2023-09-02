@@ -1,9 +1,14 @@
 ---
 import type { Post } from "../types/Post";
 
-const { post } = Astro.props as Post;
+type Props = {
+  title: string;
+  url: string;
+};
+
+const { title, url } = Astro.props as Props;
 ---
 
 <li>
-  <a href={post.url}>{post.frontmatter.title}</a>
+  <a href={url}>{title}</a>
 </li>
