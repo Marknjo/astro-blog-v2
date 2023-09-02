@@ -4,11 +4,41 @@ import type { Post } from "../types/Post";
 type Props = {
   title: string;
   url: string;
+  asTag?: boolean;
 };
 
-const { title, url } = Astro.props as Props;
+const { title, url, asTag } = Astro.props as Props;
 ---
 
-<li>
+<li class={asTag ? "tag" : ""}>
   <a href={url}>{title}</a>
 </li>
+
+<style>
+  .tag a {
+    color: #00539f;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    font-size: 1.15em;
+    display: inline-block;
+    transition: all 150ms ease;
+  }
+
+  .tag a:hover,
+  .tag a:focus {
+    color: #073663;
+  }
+
+  .tag {
+    margin: 0.25em;
+    border: dotted 1px #a1a1a1;
+    border-radius: 0.5em;
+    background-color: #f8fcfd;
+    transition: all 150ms ease;
+  }
+
+  .tag:hover,
+  .tag:focus {
+    background-color: #d5e4f3;
+  }
+</style>
