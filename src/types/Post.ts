@@ -11,9 +11,10 @@ export type PostFrontmatter = {
   tags: string[];
 };
 
-export type Post = {
-  post: {
-    url: string;
-    frontmatter: PostFrontmatter;
-  };
+export type Blog = {
+  frontmatter: PostFrontmatter;
 } & MarkdownInstance<Record<string, any>>;
+
+export type Post = {
+  post: Blog;
+};
