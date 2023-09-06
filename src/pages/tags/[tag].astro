@@ -4,22 +4,23 @@ import BlogPost from "../../components/BlogPost.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 import "../../styles/global.css";
-import type { Blog, Post } from "../../types/Post";
+
+import { getCollection, type CollectionEntry } from "astro:content";
 
 export const getStaticPaths = (async () => {
-  const allPosts = await Astro.glob("../posts/*.md");
+  const allPosts = await getCollection('posts');
 
-  const tags = allPosts.flatMap((post) => post.frontmatter.tags);
+  const tags = allPosts.flatMap((post) => post.data.tags);
 
   return Array.from(new Set(tags)).map((tag) => ({
     params: { tag },
     props: {
-      tagPosts: allPosts.filter((post) => post.frontmatter.tags.includes(tag)),
+      tagPosts: allPosts.filter((post) => post.data.tags.includes(tag)),
     },
   }));
 }) satisfies GetStaticPaths;
 
-const { tagPosts } = Astro.props as { tagPosts: Blog[] };
+const { tagPosts } = Astro.props as { tagPosts: CollectionEntry<'posts'>[] };
 
 const { tag } = Astro.params;
 ---
@@ -29,7 +30,7 @@ const { tag } = Astro.params;
   <ul>
     {
       tagPosts.map((post) => (
-        <BlogPost url={post.url!} title={post.frontmatter.title} />
+        <BlogPost url={post.slug!} title={post.data.title} />
       ))
     }
   </ul>
