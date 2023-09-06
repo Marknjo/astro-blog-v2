@@ -1,9 +1,9 @@
 ---
+import { Image } from "astro:assets";
 import Tags from "../components/Tags.astro";
 import BaseLayout from "./BaseLayout.astro";
 const { frontmatter } = Astro.props;
 
-const formatedDate = new Date(frontmatter.pubDate).toISOString()
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
@@ -12,7 +12,9 @@ const formatedDate = new Date(frontmatter.pubDate).toISOString()
 
   <p>Written by: {frontmatter.author} on {new Date(frontmatter.pubDate).toISOString().slice(0, 10)}</p>
 
-  <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+
+  <Image src={frontmatter.image.url} alt={frontmatter.image.alt} width="600" height="300" style={{ objectFit: 'cover' }} format="webp" quality={'mid'}  />
+
 
   <slot />
 
