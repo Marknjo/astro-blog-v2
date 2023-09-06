@@ -2,14 +2,15 @@
 import Tags from "../components/Tags.astro";
 import BaseLayout from "./BaseLayout.astro";
 const { frontmatter } = Astro.props;
+
+const formatedDate = new Date(frontmatter.pubDate).toISOString()
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
-  <p>{frontmatter.pubDate.slice(0, 10)}</p>
 
   <p><em>{frontmatter.description}</em></p>
 
-  <p>Written by: {frontmatter.author} on {frontmatter.pubDate.slice(0, 10)}</p>
+  <p>Written by: {frontmatter.author} on {new Date(frontmatter.pubDate).toISOString().slice(0, 10)}</p>
 
   <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
 
